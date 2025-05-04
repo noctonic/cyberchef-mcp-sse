@@ -31,17 +31,20 @@ type OperationConfig = Record<string, OperationDefinition>;
 const operations = rawOperations as OperationConfig;
 
 
-server.tool(
-  "cyberchef-ops-list",
-  `Returns a list of CyberChef operations that can be passed into cyberchef-bake.
-   Run cyberchef-op-args before choosing arguments.`,
-  async (_extra) => {
+const getOpsListHandler = async ({ dummyArg }: { dummyArg: string }) => {
     let ops = Object.keys(operations);
 
     return {
       content: [{ type: "text", text: JSON.stringify(ops) }]
     };
-  }
+  };
+
+server.tool(
+  "cyberchef-ops-list",
+  `Returns a list of CyberChef operations that can be passed into cyberchef-bake.
+   Run cyberchef-op-args before choosing arguments.`,
+  { dummyArg: z.string() },
+  getOpsListHandler
 );
 
 const getOpsDetailsSchema = z.object({
