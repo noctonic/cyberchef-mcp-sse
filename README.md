@@ -12,5 +12,5 @@ This MCP server builds the cyberchef node API, exposes 3 tools and 1 prompt. Cur
 
 ### Prompts:
 
-`cyberchef-prompt` Explains annd encourages the use of the tools.
+`cyberchef-prompt` Explains and encourages the use of the tools.
 
